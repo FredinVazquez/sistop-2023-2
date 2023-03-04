@@ -81,7 +81,7 @@ En este caso vamos a explorar credentials Management API, este va a permitir a l
 <li>Credenciales genéricas</li>
 </ul><br>
 <h3>Credenciales del dominio</h3>
-El sistema operativo usa estas credenciales para autenticar la autoridad de seguridad local (LSA). Estas credenciales establecen para un usuario cuando un paquete de seguridad autentica los datos de inicio de sesión dado por el usuario, se almacena en caché estas credenciales tal que nos dará la facilidad que un único inicio sesión proporcione al usuario acceso a muchos recursos diferentes. <br><br>
+El sistema operativo usa estas credenciales para autenticar la autoridad de seguridad local (LSA). Estas credenciales establecen para un usuario cuando un paquete de seguridad auténtica los datos de inicio de sesión dado por el usuario, se almacena en caché estas credenciales tal que nos dará la facilidad que un único inicio sesión proporcione al usuario acceso a muchos recursos diferentes. <br><br>
 Entonces, la administración de credenciales genera un mecanismo para que aplicaciones pidan a un usuario las credenciales de dominio, y esto va a suceder hasta después de que el usuario inicie sesión y el sistema operativo pueda autenticar la información proporcionada por el usuario.<br><br>
 Es importante mencionar que la contraseña en estas credenciales, está protegida por el sistema operativo. Será únicamente el código que se ejecuta en proceso con LSA puede leer y escribir.<br><br>
 <h3>Credenciales genéricas</h3>
@@ -92,6 +92,26 @@ Una vez cubierto la administración de credenciales, vamos a explorar sobre la a
 <h3>Autenticación LSA</h3>
 Puede sonar un poco raro esta definición, pero simplemente podemos entenderlo como partes que las aplicaciones pueden usar para autenticar e iniciar sesión de los usuarios en el sistema local. Lo que hará es crear y llamar paquetes de autenticación y de seguridad.<br><br>
 Ahora, los paquetes de autenticación implementan protocolos de seguridad, un paquete lo que hará es analizar los datos de inicio de sesión siguiendo las reglas y procedimientos establecidos en un protocolo de seguridad.<br><br>
+
+ <h2>Conceptos básicos de autorización</h2>
+La autorización es utilizada para configurar ciertos permisos que se usan para evaluar el acceso a recursos o funcionalidades, también esta función describe lo que se puede hacer con los datos que tenemos de la computadora, a esto lo llamamos control de acceso.	
+La autenticación se utiliza para confirmar que un usuario o servicio sirva como debería servir.
+Estos 2 conceptos no solamente funcionan para los usuarios, sino que los servicios o aplicaciones se crean para aprovechar de una mejor manera los recursos en lugar de un usuario en específico.
+Estos 2 conceptos se pueden relación uno con otro, por ejemplo, la autorización puede dar o negar ciertos permisos a ciertas entidades que realizan una solicitud. Si la persona o aplicación demuestra ser quien dice ser, se le concederán los recursos necesarios y permisos que necesita.
+Listas de control de acceso
+Anteriormente, hablamos sobre el control de acceso, también existen listas de control de acceso, estas listas implican el mantenimiento de listas de entidades que pueden tener o no acceso a permisos o recursos.
+Estas listas ayudan a tener un mejor control para realizar la autorización, pero son difíciles de manejar, ya que, mientras más entidades tengamos, mayor será la complejidad.
+Existen varios tipos de control acceso, vamos a mencionar 2 de los más importantes
+ <li>Control de acceso basado en roles</li>
+ <li>Control de acceso basado en atributos</li>
+ <h3>Diferencias entre estos 2 tipos:</h3><br>
+
+<li>RBAC asigna permisos a roles, y luego asigna roles a usuarios. Los usuarios tienen acceso a los recursos y datos que se les ha asignado a través de los roles a los que están asociados. RBAC es útil en entornos donde las funciones y responsabilidades de los usuarios son claramente definidas y estandarizadas.</li>
+<li>ABAC, por otro lado, utiliza atributos de usuario, objeto y contexto para tomar decisiones de acceso. ABAC define políticas que especifican qué usuarios o grupos de usuarios tienen acceso a qué recursos en función de los atributos que poseen. ABAC es útil en entornos donde las decisiones de acceso deben basarse en información específica del usuario, objeto o contexto.</li>
+En resumen, mientras que RBAC se basa en roles predefinidos y asignaciones de permisos, ABAC utiliza información específica del usuario y del contexto para tomar decisiones de acceso. Ambos enfoques tienen sus ventajas y desventajas, y la elección entre uno u otro dependerá de las necesidades y características del sistema en cuestión.
+<h3>Implementación de la autorización</h3><br>
+Por último, hablaremos como implementar todo lo anterior dicho:
+La autorización se puede implementar en aplicaciones o soluciones que necesiten control de acceso utilizando middleware o soluciones de API disponibles en plataformas de desarrollo de aplicaciones. Durante la autenticación, las aplicaciones pueden analizar la información intercambiada o solicitar información adicional a recursos externos. Además, existe la opción de utilizar servicios especializados en autorización para gestionar y centralizar las autorizaciones de forma más eficiente.
 
 <h2>Fuentes consultadas</h2>
 <ol>
